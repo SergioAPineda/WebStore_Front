@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+.logo {
+    margin: 1.5rem;
+}
+
+.footer-text {
+    margin: 1rem;
+}
+
+.nav-items {
+    margin-left: 1rem;
+}
+
+.nav-item {
+    padding-left: 0.5rem;
+}
+
+.main-content {
+    margin-top: 1.7rem;
+}
