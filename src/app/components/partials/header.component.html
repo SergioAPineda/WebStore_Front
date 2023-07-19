@@ -17,12 +17,12 @@
         </a>
       </li>
       <li class="nav-item">
-        <!-- <% if (title == "Projects") { %> -->
+        <!-- <% if (title == "Products") { %> -->
             <!-- <a class="nav-link active" href="/projects"> -->
         <!-- <% } else { %> -->
-        <a class="nav-link" [class.active]="title == 'Projects'" href="/projects">
+        <a class="nav-link" [class.active]="title == 'Products'" href="/products">
         <!-- <% } %>             -->
-          <i class="fas fa-project-diagram"></i> Projects 
+          <i class="fas fa-project-diagram"></i> Products
         </a>
       </li>
       <li class="nav-item">
@@ -35,25 +35,25 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-        <!-- <% if (title == "Inventory List" || title == "Add a new Item") { %> -->
-        <a *ngIf="title == 'Inventory List' || title == 'Add a new Item'; else deactiveList"
+        <!-- <% if (title == "Products List" || title == "Add a new Item") { %> -->
+        <a *ngIf="title == 'Products List' || title == 'Add a new Item'; else deactiveList"
             class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="fa-solid fa-barcode"></i> Inventory
+            <i class="fa-solid fa-barcode"></i> Products
         </a>
         <!-- <% } else { %> -->
         <ng-template #deactiveList>
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="fa-solid fa-barcode"></i> Inventory
+            <i class="fa-solid fa-barcode"></i> Products
           </a>
         </ng-template>
         <!-- <% } %>        -->
         <ul class="dropdown-menu">
-          <!-- <li><a class="dropdown-item" href="/inventory/list">Inventory List</a></li>
+          <!-- <li><a class="dropdown-item" href="/inventory/list">Products List</a></li>
           <li><a class="dropdown-item" href="/inventory/add">Add a new Item</a></li> -->
           <li>
             <a class="dropdown-item" routerLink="/inventory/list">
               <i class="fa-regular fa-rectangle-list"></i> 
-              Inventory List
+              Products List
             </a>
           </li>
           <li>
@@ -79,6 +79,7 @@
         <% } else { %>
           <a class="nav-link" href="/users/signin">Signin</a>
         <% } %>             -->
+        
           <!-- <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Sign Out ({{ auth.username }})</a>
           <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/signin">Signin</a> -->
       </li> 
