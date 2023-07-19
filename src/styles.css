@@ -18,4 +18,12 @@
 
 .main-content {
     margin-top: 1.7rem;
+    margin-bottom: 3rem;
+}
+
+#carouselExample{
+    
+    .carousel-item {
+        height: 70vh;
+    }
 }
