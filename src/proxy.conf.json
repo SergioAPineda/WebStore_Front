@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://webstoreb.onrender.com",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
