@@ -9,12 +9,12 @@ export class RestDataSource{
     baseUrl: string;
 
     constructor(private http: HttpClient){
-        this.baseUrl = "http://localhost:3000/";
+        this.baseUrl = "https://webstoreb.onrender.com/";
     }
 
     // Get inventory list from the backend.
-    getInvetoryList(): Observable<Product[]>{
-        return this.http.get<Product[]>(this.baseUrl + "inventory/list");
+    getProductsList(): Observable<Product[]>{
+        return this.http.get<Product[]>(this.baseUrl + "products/list");
     }
 
 }

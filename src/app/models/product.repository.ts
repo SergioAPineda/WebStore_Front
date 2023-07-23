@@ -15,7 +15,7 @@ export class ProductRepository{
     }
 
     setProduct(){
-        this.datasource.getInvetoryList().subscribe(data => {
+        this.datasource.getProductsList().subscribe(data => {
             this.ProductList = data;
             this.listReady = true;
         });
