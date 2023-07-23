@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from "@angular/router";
+import { ModelModule } from "src/app/models/model.module";
+import { PartialsModule } from '../partials/partials.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ListComponent } from './list.component';
 
-import { ProductsComponent } from './products.component';
-import { PartialsModule } from '../partials/partials.module';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, PartialsModule],
-    declarations: [
-        ProductsComponent
-    ],
-    exports: [ProductsComponent]
+    imports: [ModelModule, PartialsModule, BrowserModule, FormsModule, RouterModule],
+    declarations: [ListComponent],
+    exports: [ListComponent]
 })
 
-export class ProductsModule{
-
-}
+export class ProductsModule{}
