@@ -5,6 +5,6 @@ import { Component } from "@angular/core";
     templateUrl: './modify-profile.component.html'
 })
 
-export class IndexComponent{
+export class ModifyProfileComponent{
     title = 'Modify Profile'
 }

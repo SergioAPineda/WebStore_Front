@@ -12,6 +12,7 @@ import { ResponseModel } from "./response.model";
 export class RestDataSource{
 
     baseUrl: string;
+    auth_token: string;
 
     constructor(private http: HttpClient){
         this.baseUrl = "https://webstoreb.onrender.com/";

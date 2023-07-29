@@ -5,6 +5,6 @@ import { Component } from "@angular/core";
     templateUrl: './signup.component.html'
 })
 
-export class IndexComponent{
+export class SignUpComponent{
     title = 'Signup'
 }
