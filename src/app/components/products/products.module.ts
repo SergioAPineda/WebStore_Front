@@ -5,12 +5,13 @@ import { PartialsModule } from '../partials/partials.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list.component';
+import { AddEditComponent } from "./add_edit.component";
 
 
 @NgModule({
     imports: [ModelModule, PartialsModule, BrowserModule, FormsModule, RouterModule],
-    declarations: [ListComponent],
-    exports: [ListComponent]
+    declarations: [ListComponent, AddEditComponent],
+    exports: [ListComponent, AddEditComponent]
 })
 
 export class ProductsModule{}
