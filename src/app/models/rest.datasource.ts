@@ -5,7 +5,7 @@ import { Product } from "./product.model";
 import { Injectable } from "@angular/core";
 import { User } from "./user.model";
 import { ResponseModel } from "./response.model";
-// import { environment } from "src/environments/environment";
+import { environment } from "src/environments/environment";
 
 
 @Injectable()
@@ -15,7 +15,9 @@ export class RestDataSource{
     auth_token: string;
 
     constructor(private http: HttpClient){
-        this.baseUrl = "https://webstoreb.onrender.com/";
+        // this.baseUrl = "http://localhost:3000/";   
+        this.baseUrl = `${environment.backend_url}` 
+        console.log("Backend URL: ", this.baseUrl);
     }
 
     // Get Product list from the backend.
