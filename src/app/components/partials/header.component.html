@@ -68,7 +68,7 @@
         <!-- <% if (title == "Users") { %> -->
             <!-- <a class="nav-link active" href="/users"> -->
         <!-- <% } else { %> -->
-            <a class="nav-link" [class.active]="title == 'Users'" href="/users">
+            <a class="nav-link" [class.active]="title == 'Users'" href="/users/signin">
         <!-- <% } %>             -->
             <i class="fas fa-user"></i> Users 
         </a>
@@ -79,9 +79,8 @@
         <% } else { %>
           <a class="nav-link" href="/users/signin">Signin</a>
         <% } %>             -->
-        
-          <!-- <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Sign Out ({{ auth.username }})</a>
-          <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/signin">Signin</a> -->
+          <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Sign Out ({{ auth.username }})</a>
+          <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/signin">Signin</a>
       </li> 
       
     </ul>

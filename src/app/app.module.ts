@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { IndexModule } from './components/index.module';
 import { ProductsModule } from './components/products/products.module';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AuthModule } from './components/auth/auth.module';
 import { AuthGuard } from './components/auth/auth.guard';
 

@@ -14,10 +14,12 @@ export class AuthService{
     constructor(private datasource: RestDataSource){}
 
     signupUser(user: User): Observable<ResponseModel> {
+        console.log("AuthService - signupUser")
         return this.datasource.signupUser(user);
     }
 
     authenticate(username: string, password: string): Observable<ResponseModel> {
+        console.log("AuthService - authenticate")
         return this.datasource.authenticate(username, password)
             .pipe(map(response => {
                 if(response.success)
@@ -29,6 +31,7 @@ export class AuthService{
     }
 
     get redirectUrl(): string{
+        console.log("AuthService - _redirectUrl "+this._redirectUrl)
         let result = this._redirectUrl;
         this._redirectUrl = null;
         return result;

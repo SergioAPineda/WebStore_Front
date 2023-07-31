@@ -10,7 +10,7 @@ import { ModifyProfileComponent } from "./modify-profile.component";
 @NgModule({
     imports: [ModelModule, BrowserModule, FormsModule, PartialsModule],
     declarations: [SignUpComponent, SignInComponent ],
-    exports : [SignUpComponent, SignInComponent, ModifyProfileComponent ]
+    exports : [SignUpComponent, SignInComponent]
 })
 
 export class AuthModule {}
