@@ -1,6 +1,4 @@
 import { Component } from "@angular/core";
-import { Product } from "../models/product.model";
-import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-index',

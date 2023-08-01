@@ -12,8 +12,8 @@ import { AuthGuard } from "./components/auth/auth.guard";
         RouterModule.forRoot([
             { path: "", component: IndexComponent },
             { path: "products/list", component: ListComponent },
-            { path: "products/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
-            { path: "products/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },
+            //{ path: "products/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
+            //{ path: "products/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },
             { path: "users/signin", component: SignInComponent },
             { path: "users/signup", component: SignUpComponent },
             { path: "**", redirectTo: "" }

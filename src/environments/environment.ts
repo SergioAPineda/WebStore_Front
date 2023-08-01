@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    backend_url: "http://localhost:3000/"
+    backend_url: "https://webstoreb.onrender.com/"
+    //backend_url: "http://localhost:3000/"
   };
   
   /*

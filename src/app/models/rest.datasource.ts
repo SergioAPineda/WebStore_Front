@@ -22,12 +22,13 @@ export class RestDataSource{
 
     // Get Product list from the backend.
     getProductsList(): Observable<Product[]>{
-        return this.http.get<Product[]>(this.baseUrl + "products/list");
+        console.log("get products endpoint  "+this.baseUrl + "product/")
+        return this.http.get<Product[]>(this.baseUrl + "product/");
     }
 
     insertProduct(item: Product): Observable<Product> {
         return this.http.post<Product>(
-                this.baseUrl + "products/add",
+                this.baseUrl + "product/new",
                 item,
                 this.provideToken()
             ).pipe(map(response => {
@@ -41,7 +42,7 @@ export class RestDataSource{
 
     updateProduct(item: Product): Observable<ResponseModel> {
         return this.http.put<ResponseModel>(
-                `${this.baseUrl}products/edit/${item._id}`,
+                `${this.baseUrl}product/update/${item._id}`,
                 item,
                 this.provideToken()
             ).pipe(map(response => {
@@ -63,6 +64,7 @@ export class RestDataSource{
     
     // User endpoint of the API
     signupUser(user: User): Observable<ResponseModel> {
+        console.log("sign up endpoint  "+this.baseUrl + "users/signup")
         return this.http.post<ResponseModel>(this.baseUrl + "users/signup", user)
             .pipe(
                 map(response => {
@@ -74,6 +76,7 @@ export class RestDataSource{
     }
 
     authenticate(user: string, pass: string): Observable<ResponseModel> {
+        console.log("sign in endpoint  "+this.baseUrl + "users/signin")
         return this.http.post<any>(this.baseUrl + "users/signin",
             {
                 username: user,
