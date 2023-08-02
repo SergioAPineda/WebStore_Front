@@ -11,23 +11,24 @@ import { User } from "../../models/user.model";
 export class SignUpComponent {
 
     public user: User = new User();
-    public confirmPassowrd: string;
+    public confirmPassword: string;
     public message: string;
 
     constructor(private router: Router,
         private auth: AuthService) { }
 
     signup(form: NgForm) {
+        console.log('entrando a ngform')
         if (form.valid) {
             // Checks if the passwords match.
-            if(this.user.password == this.confirmPassowrd){
+            if(this.user.password == this.confirmPassword){
                 this.auth.signupUser(this.user)
                     .subscribe(response => {
                         console.log(response);
                         
                         if (response.success) {
                             alert(response.message);
-                            this.router.navigateByUrl("/users/signin");
+                            this.router.navigateByUrl("users/signin");
                         }
                         // Error message from the API.
                         this.message = response.message; 
