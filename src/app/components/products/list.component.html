@@ -1,0 +1,71 @@
+<app-header [title]="title"></app-header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <h1>{{ title }}</h1>
+        <br>
+        <div>
+            <!-- <a href="/inventory/add" class="btn btn-primary align-self-end" role="button">
+                <i class="fas fa-plus-circle"></i> 
+                Add a new Item
+            </a>                 -->
+            <!-- <a routerLink="/inventory/add" class="btn btn-primary align-self-end" role="button">
+                <i class="fas fa-plus-circle"></i> 
+                Add a new Item
+            </a>  -->
+        </div>
+
+        <button class="btn" *ngIf="this.repository.listReady == false">
+            <span class="spinner-border spinner-border-sm"></span>
+            Loading..
+        </button>
+
+        <div class="table-responsive" *ngIf="this.repository.listReady == true">
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Category</th>
+                    <th class="text-center">Description</th>
+                    <th>Size</th>
+                    <th class="text-center" colspan="3">Actions</th>
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <!-- <% for(let count = 0; count < productsList.length; count++) { %> -->
+                    <!-- <tr> -->
+                    <tr *ngFor="let item of productsList">
+                        <td class="text-center"> {{ item.name }} </td>
+                        <td class="text-center"> {{ item.category }} </td>
+                        <td class="text-center"> {{ item.description }} </td>
+                        <td>
+                            <!-- Height: {{ item.size.h }}<br />
+                            Width: {{ item.size.w }}<br />
+                            UOM: {{ item.size.uom }}<br /> -->
+                        </td>
+                        <!-- <td class="text-center">{{ item.tags }}</td> -->
+                        <!-- <td class="text-center">
+                            <button class="btn bg-primary btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt" ></i></button>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn bg-danger btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i></a>
+                        </td> -->
+                        <!-- <td class="text-center">
+                            <button [routerLink]="['/inventory/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt" ></i></button>
+                        </td> -->
+                        <!-- <td class="text-center">
+                            <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i></a>
+                        </td> -->
+                    </tr> 
+                <!-- <% } %> -->
+            </table>
+        </div>
+    </div>
+  </main>
+<app-footer></app-footer>
