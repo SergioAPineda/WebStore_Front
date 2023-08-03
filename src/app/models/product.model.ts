@@ -1,4 +1,4 @@
-export class Ad {
+export class Product {
 
     constructor(
         public _id?: string,
