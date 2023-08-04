@@ -53,7 +53,7 @@ export class RestDataSource{
 
     deleteProduct(id: string): Observable<ResponseModel> {
         return this.http.delete<ResponseModel>(
-                `${this.baseUrl}products/delete/${id}`,
+                `${this.baseUrl}products/deletes/${id}`,
                 this.provideToken()
                 ).pipe(map(response => {
                 return response;
