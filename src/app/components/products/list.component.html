@@ -28,7 +28,7 @@
                     <th class="text-center">Name</th>
                     <th class="text-center">Category</th>
                     <th class="text-center">Description</th>
-                    <th>Size</th>
+                    <th class="text-center">Is Active</th>
                     <th class="text-center" colspan="3">Actions</th>
                 </tr>
 
@@ -40,11 +40,7 @@
                         <td class="text-center"> {{ item.name }} </td>
                         <td class="text-center"> {{ item.category }} </td>
                         <td class="text-center"> {{ item.description }} </td>
-                        <td>
-                            <!-- Height: {{ item.size.h }}<br />
-                            Width: {{ item.size.w }}<br />
-                            UOM: {{ item.size.uom }}<br /> -->
-                        </td>
+                        
                         <!-- <td class="text-center">{{ item.tags }}</td> -->
                         <!-- <td class="text-center">
                             <button class="btn bg-primary btn-primary btn-sm">
@@ -55,10 +51,18 @@
                                 <i class="fas fa-trash-alt"></i></a>
                         </td> -->
                         <td class="text-center">
+                            
+                            <input type="checkbox" class="form-check-input" 
+                            id="activeField" name="Active" [(ngModel)]="item.isactive"
+                            >
+                                                      
+                        </td>
+                        <td class="text-center">
                             <button [routerLink]="['/products/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
                                 <i class="fas fa-pencil-alt" ></i></button>
                         </td>
                         <td class="text-center">
+                            
                             <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i></a>
                         </td>
