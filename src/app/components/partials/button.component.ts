@@ -11,7 +11,7 @@ import axios from 'axios';
 export class ButtonComponent {
     getProducts() {
         axios
-            .get('https://webstoreb.onrender.com/product/')
+            .get('https://webstoreb.onrender.com/products/list')
             .then((response) => {
                 console.log('Products:', response.data);
 

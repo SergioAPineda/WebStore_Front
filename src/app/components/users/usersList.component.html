@@ -1,0 +1,47 @@
+<app-header [title]="title"></app-header>
+
+<main class="container">
+    <div class="row">
+        <h1>{{ title }}</h1>
+        <br>
+        <div>
+        </div>
+
+        <button class="btn" *ngIf="this.repository.listReady == false">
+            <span class="spinner-border spinner-border-sm"></span>
+            Loading..
+        </button>
+
+        <div class="table-responsive" *ngIf="this.repository.listReady == true">
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <th class="text-center">First Name</th>
+                    <th class="text-center">Last Name</th>
+                    <th class="text-center">User</th>
+                    <th class="text-center">e-mail</th>
+                    <th class="text-center">Admin</th>
+                    <th class="text-center" colspan="2">Actions</th>
+                    <th class="text-center"></th>
+                </tr>
+
+                <tr *ngFor="let item of usersList">
+                    <td class="text-center"> {{ item.firstName }} </td>
+                    <td class="text-center"> {{ item.lastName }} </td>
+                    <td class="text-center"> {{ item.username }} </td>
+                    <td class="text-center"> {{ item.email }} </td>
+                    <td class="text-center"> {{ item.admin }} </td>
+                    <td class="text-center">
+                        <button [routerLink]="['/users/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i></button>
+                    </td>
+                    <td class="text-center">
+
+                        <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>
