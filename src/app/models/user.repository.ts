@@ -23,7 +23,7 @@ export class UserRepository {
     }
 
     deleteUser(id: string) {
-        console.log("deleteUser use repo")
+        console.log("delete User use repo")
         this.dataSource.deleteUser(id).subscribe(response => {
             if (response.success) {
                 this.UserList.splice(this.UserList.

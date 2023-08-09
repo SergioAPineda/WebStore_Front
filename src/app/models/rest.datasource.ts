@@ -22,8 +22,8 @@ export class RestDataSource{
 
     // Get Product list from the backend.
     getProductsList(): Observable<Product[]>{
-        console.log("get products endpoint  "+this.baseUrl + "product/")
-        return this.http.get<Product[]>(this.baseUrl + "product/");
+        console.log("get products endpoint  "+this.baseUrl + "products/")
+        return this.http.get<Product[]>(this.baseUrl + "products/");
     }
 
     getUsersList(): Observable<User[]>{

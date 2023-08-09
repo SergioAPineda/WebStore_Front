@@ -18,6 +18,7 @@ export class ListComponent{
 
     get productsList(): Product[]{
         return this.repository.getProduct();
+    
     }
 
     deleteMethod(id: string) {
