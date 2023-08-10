@@ -22,8 +22,13 @@ export class RestDataSource{
 
     // Get Product list from the backend.
     getProductsList(): Observable<Product[]>{
-        console.log("get products endpoint  "+this.baseUrl + "product/")
-        return this.http.get<Product[]>(this.baseUrl + "product/");
+        console.log("get products endpoint  "+this.baseUrl + "products/")
+        return this.http.get<Product[]>(this.baseUrl + "products/");
+    }
+
+    getUsersList(): Observable<User[]>{
+        console.log("get users endpoint  "+this.baseUrl + "users/userlist")
+        return this.http.get<User[]>(this.baseUrl + "users/userlist");
     }
 
     insertProduct(item: Product): Observable<Product> {
@@ -54,6 +59,19 @@ export class RestDataSource{
     deleteProduct(id: string): Observable<ResponseModel> {
         return this.http.delete<ResponseModel>(
                 `${this.baseUrl}products/delete/${id}`,
+                this.provideToken()
+                ).pipe(map(response => {
+                return response;
+            }),
+            catchError(error => {return of(error.error)}));
+    }
+
+    deleteUser(id: string): Observable<ResponseModel> {
+        console.log("deleteUser rest datasource")
+        console.log("this.baseUrl "+this.baseUrl)
+        console.log("id "+id)
+        return this.http.delete<ResponseModel>(
+                `${this.baseUrl}users/delete/${id}`,
                 this.provideToken()
                 ).pipe(map(response => {
                 return response;

@@ -18,7 +18,7 @@
 
         <button class="btn" *ngIf="this.repository.listReady == false">
             <span class="spinner-border spinner-border-sm"></span>
-            Loading..
+            Loading...
         </button>
 
         <div class="table-responsive" *ngIf="this.repository.listReady == true">
@@ -65,14 +65,14 @@
                                 <i class="fas fa-pencil-alt" ></i></button>
                         </td>
                         <td class="text-center">
-                            
                             <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i></a>
                         </td>
                         <td class="text-center">
-                            
-                            <a class="btn btn-dark">Inquire</a>
-                        </td>
+                            <button class="btn bg-info btn-primary btn-sm">
+                              <i class="fas fa-comment-alt"> Inquire</i>
+                            </button>
+                          </td>
                     </tr> 
                 <!-- <% } %> -->
             </table>
