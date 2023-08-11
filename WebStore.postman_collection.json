@@ -69,7 +69,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/product/",
+					"raw": "http://localhost:3000/products/",
 					"protocol": "http",
 					"host": [
 						"localhost"

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './components/auth/signin.component';
 import { SignUpComponent } from './components/auth/signup.component';
+import { UsersListComponent } from './components/users/users.module';
+import { AddEditUserComponent } from './components/users/addEditUser.component';
 import { AddEditComponent } from './components/products/add_edit.component';
 import { ListComponent } from './components/products/list.component';
 import { IndexComponent } from './components/index.component';
@@ -20,6 +22,8 @@ import { AnswerComponent } from './components/products/answers.component';
             { path: "questions/:id/answers", component: AnswerComponent },
             { path: "users/signin", component: SignInComponent },
             { path: "users/signup", component: SignUpComponent },
+            { path: "users/userlist", component: UsersListComponent},
+            { path: "users/:mode/:id", component: AddEditUserComponent, canActivate: [AuthGuard]},
             { path: "**", redirectTo: "" }
         ])
     ],

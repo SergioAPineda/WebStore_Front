@@ -62,6 +62,19 @@ export class RestDataSource{
             catchError(error => {return of(error.error)}));
     }
 
+    deleteUser(id: string): Observable<ResponseModel> {
+        console.log("deleteUser rest datasource")
+        console.log("this.baseUrl "+this.baseUrl)
+        console.log("id "+id)
+        return this.http.delete<ResponseModel>(
+                `${this.baseUrl}users/delete/${id}`,
+                this.provideToken()
+                ).pipe(map(response => {
+                return response;
+            }),
+            catchError(error => {return of(error.error)}));
+    }
+
     
     // Question Data Source
 
