@@ -23,7 +23,7 @@ export class UserRepository {
     }
 
     deleteUser(id: string) {
-        console.log("deleteUser use repo")
+        console.log("delete User use repo")
         this.dataSource.deleteUser(id).subscribe(response => {
             if (response.success) {
                 this.UserList.splice(this.UserList.
@@ -35,46 +35,29 @@ export class UserRepository {
         })
     }
 
-    // 
-    // getItem(id: string): Product {
-    //     return Object.assign({}, this.ProductList.find(i => i._id === id)!);      
-    //     // return (this.Product.find(i => i._id === id)!);        
-    // }
+    
+    getUserById(id: string): User {
+        return Object.assign({}, this.UserList.find(i => i._id === id)!);      
+        // return (this.Product.find(i => i._id === id)!);        
+    }
 
-    // async saveProduct(item: Product) {
+    async saveUser(item: User) {
 
-    //     // If it does not have id, then create a new item.
-    //     if (item._id == null || item._id == "") {
-    //         this.dataSource.insertProduct(item)
-    //             .subscribe(response => {
-    //                 if(response._id) // If API created
-    //                 {
-    //                     this.ProductList.push(response);
-    //                 }
-    //                 else{ // If API send error.
-    //                     // Convert into ResponseModel to get the error message.
-    //                     let error = response as ResponseModel;  
-    //                     alert(`Error: ${error.message}`);
-    //                 }
-    //             });
-    //     } else {
-    //         // If it has id, then update a existing item.
-    //         this.dataSource.updateProduct(item).subscribe(resp => {
+        this.dataSource.updateUser(item).subscribe(resp => {
 
-    //             // Convert into ResponseModel to get the error message.
-    //             let response = resp as ResponseModel;
-    //             if (response.success == true) {
-    //                 console.log(`Sucess: ${response.success}`);
-    //                 this.ProductList.splice(this.ProductList.
-    //                     findIndex(i => i._id == item._id), 1, item);
-    //             }
-    //             else{
-    //                 // If API send error.
-    //                 alert(`Error: ${response.message}`);
-    //             }        
-    //         });
-    //     }
-    // }
+            // Convert into ResponseModel to get the error message.
+            let response = resp as ResponseModel;
+            if (response.success == true) {
+                console.log(`Sucess: ${response.success}`);
+                this.UserList.splice(this.UserList.
+                    findIndex(i => i._id == item._id), 1, item);
+            }
+            else{
+                // If API send error.
+                alert(`Error: ${response.message}`);
+            }        
+        });
+    }
 
 
 

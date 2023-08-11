@@ -29,6 +29,7 @@ export class AddEditComponent {
         // Edit
         if (this.editing) {
             this.item = this.repository.getItem(activeRoute.snapshot.params["id"]);
+            console.log(this.item);
         } 
 
         // Add
@@ -43,6 +44,7 @@ export class AddEditComponent {
     }
 
     private deleteItem(id: string){
+        
         this.repository.deleteProduct(id);
         this.router.navigateByUrl("products/list");
     }

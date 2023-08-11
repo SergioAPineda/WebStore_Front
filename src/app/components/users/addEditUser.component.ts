@@ -13,7 +13,7 @@ export class AddEditUserComponent {
     
     title:string = 'Add a new Item';
     editing: boolean = false;
-    item: User = new User();
+    user: User = new User();
 
     constructor(private repository: UserRepository,
                 private router: Router,
@@ -26,23 +26,18 @@ export class AddEditUserComponent {
             this.deleteItem(activeRoute.snapshot.params["id"]);
         }
 
-        //this.editing = activeRoute.snapshot.params["mode"] == "edit";
+        this.editing = activeRoute.snapshot.params["mode"] == "edit";
         
-        // Edit
-        // if (this.editing) {
-        //     this.item = this.repository.getItem(activeRoute.snapshot.params["id"]);
-        // } 
-
-        // Add
-        // else {
-        //     this.item.size = new Size();
-        // }        
+        //Edit
+        if (this.editing) {
+            this.user = this.repository.getUserById(activeRoute.snapshot.params["id"]);
+        }    
     }
 
-    // save(form: NgForm) {
-    //     this.repository.saveProduct(this.item);
-    //     this.router.navigateByUrl("products/list");                
-    // }
+    save(form: NgForm) {
+        this.repository.saveUser(this.user);
+        this.router.navigateByUrl("users/userlist");                
+    }
 
     private deleteItem(id: string){
         console.log("addEdit User component")

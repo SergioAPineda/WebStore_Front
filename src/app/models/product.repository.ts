@@ -15,6 +15,7 @@ export class ProductRepository{
         return this.ProductList
     }
 
+    
     setProduct(){
         this.dataSource.getProductsList().subscribe(data => {
             this.ProductList = data;
@@ -62,6 +63,8 @@ async saveProduct(item: Product) {
         });
     }
 }
+  
+
 
 deleteProduct(id: string) {
     this.dataSource.deleteProduct(id).subscribe(response => {

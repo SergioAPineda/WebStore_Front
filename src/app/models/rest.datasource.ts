@@ -22,8 +22,8 @@ export class RestDataSource{
 
     // Get Product list from the backend.
     getProductsList(): Observable<Product[]>{
-        console.log("get products endpoint  "+this.baseUrl + "product/")
-        return this.http.get<Product[]>(this.baseUrl + "product/");
+        console.log("get products endpoint  "+this.baseUrl + "products/")
+        return this.http.get<Product[]>(this.baseUrl + "products/");
     }
 
     getUsersList(): Observable<User[]>{
@@ -48,6 +48,17 @@ export class RestDataSource{
     updateProduct(item: Product): Observable<ResponseModel> {
         return this.http.put<ResponseModel>(
                 `${this.baseUrl}product/update/${item._id}`,
+                item,
+                this.provideToken()
+            ).pipe(map(response => {
+                return response;
+            }),
+            catchError(error => {return of(error.error)}));
+    }
+
+    updateUser(item: User): Observable<ResponseModel> {
+        return this.http.put<ResponseModel>(
+                `${this.baseUrl}users/edit/${item._id}`,
                 item,
                 this.provideToken()
             ).pipe(map(response => {
