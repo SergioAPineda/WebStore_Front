@@ -69,7 +69,9 @@
                                 <i class="fas fa-trash-alt"></i></a>
                         </td>
                         <td class="text-center">
-                            <button class="btn bg-info btn-primary btn-sm">
+                            <a (click)="showDetails(item._id)" class="btn bg-danger btn-danger btn-sm">
+                                <i class="fas fa-comment-alt"></i></a>
+                            <button [routerLink]="['prod/details/', item._id]" class="btn bg-info btn-primary btn-sm">
                               <i class="fas fa-comment-alt"> Inquire</i>
                             </button>
                           </td>

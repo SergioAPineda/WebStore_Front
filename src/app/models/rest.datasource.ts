@@ -5,6 +5,7 @@ import { Product } from "./product.model";
 import { Injectable } from "@angular/core";
 import { User } from "./user.model";
 import { ResponseModel } from "./response.model";
+import { QuestionModel } from "./question.model";
 import { environment } from "src/environments/environment";
 
 
@@ -29,6 +30,10 @@ export class RestDataSource{
     getUsersList(): Observable<User[]>{
         console.log("get users endpoint  "+this.baseUrl + "users/userlist")
         return this.http.get<User[]>(this.baseUrl + "users/userlist");
+    }
+
+    getQuestionsByProduct(item: Product): Observable<QuestionModel[]>{
+        return this.http.get<QuestionModel[]>(this.baseUrl+ `question/product/"${item._id}`)
     }
 
     insertProduct(item: Product): Observable<Product> {

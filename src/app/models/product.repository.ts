@@ -25,6 +25,7 @@ export class ProductRepository{
 
 // 
 getItem(id: string): Product {
+    console.log("get item");
     return Object.assign({}, this.ProductList.find(i => i._id === id)!);      
     // return (this.Product.find(i => i._id === id)!);        
 }
