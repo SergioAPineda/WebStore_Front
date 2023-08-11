@@ -26,4 +26,8 @@ export class ListComponent{
             this.router.navigateByUrl("products/delete/"+id);
         }
     }
+
+    showDetails(id: string){
+        this.router.navigateByUrl(`prod/details/${id}`)
+    }
 }

@@ -6,12 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list.component';
 import { AddEditComponent } from "./add_edit.component";
+import { ProductDetailComponent } from './productDetail.component';
 
 
 @NgModule({
     imports: [ModelModule, PartialsModule, BrowserModule, FormsModule, RouterModule],
-    declarations: [ListComponent, AddEditComponent],
-    exports: [ListComponent, AddEditComponent]
+    declarations: [ListComponent, AddEditComponent, ProductDetailComponent],
+    exports: [ListComponent, AddEditComponent, ProductDetailComponent]
 })
 
 export class ProductsModule{}

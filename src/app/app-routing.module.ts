@@ -8,6 +8,7 @@ import { AddEditComponent } from './components/products/add_edit.component';
 import { ListComponent } from './components/products/list.component';
 import { IndexComponent } from './components/index.component';
 import { AuthGuard } from "./components/auth/auth.guard";
+import { ProductDetailComponent } from './components/products/productDetail.component';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import { AuthGuard } from "./components/auth/auth.guard";
             { path: "products/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
             { path: "products/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },
             { path: "products/delete/:id", component: AddEditComponent, canActivate: [AuthGuard] },
+            { path: "prod/details/:id", component: ProductDetailComponent},
             { path: "users/signin", component: SignInComponent },
             { path: "users/signup", component: SignUpComponent },
             { path: "users/userlist", component: UsersListComponent},
