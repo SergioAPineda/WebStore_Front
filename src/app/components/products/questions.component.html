@@ -1,0 +1,48 @@
+<app-header [title]="title"></app-header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <h1>{{ title }}</h1>
+        <br>
+        <div></div>
+        <button class="btn" *ngIf="this.repository.listReady == false">
+            <span class="spinner-border spinner-border-sm"></span>
+            Loading..
+        </button>
+
+        <div class="table-responsive" *ngIf="this.repository.listReady == true">
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center">Product Name</th>
+                    <th class="text-center">Question</th>
+                    <th class="text-center">Answer</th>                 
+                    <th class="text-center" colspan="2">Actions</th>              
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <!-- <% for(let count = 0; count < questionsList.length; count++) { %> -->
+                    <!-- <tr> -->
+                    <tr *ngFor="let query of questionList">
+                        <td class="text-center"> {{ query.product.name }} </td>
+                        <td class="text-center"> {{ query.questionText }} </td>
+                        <td class="text-center"> {{ query.answer }} </td>
+                        
+                        <td class="text-center">
+                            <button [routerLink]="['questions/answers/', query._id]" class="btn bg-primary btn-primary btn-sm">
+                                <i class="fa-solid fa-a" ></i></button>
+                        </td>
+                        <td class="text-center">
+                            
+                            <a (click)="deleteQuestionMethod(query._id)" class="btn bg-danger btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr> 
+                <!-- <% } %> -->
+            </table>
+        </div>
+    </div>
+  </main>
+<app-footer></app-footer>

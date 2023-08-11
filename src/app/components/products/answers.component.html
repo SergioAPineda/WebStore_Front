@@ -1,0 +1,71 @@
+<app-header [title]="title"></app-header>
+
+<!-- Content for the Add_Edit page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <!-- <h1>{{editing ? "Edit" : "Add a new"}} Item</h1> -->
+
+            <form novalidate #form="ngForm" (ngSubmit)="save(form)">
+            <!-- <form class="form" method="POST"> -->
+                <div class="form-group">
+                    <input type="hidden"
+                        name="id"
+                        [(ngModel)]="query._id"
+                    >
+                    <label for="itemTextField"></label>
+                    <input type="text" class="form-control"
+                        id="itemTextField"
+                        placeholder="Enter the Item Name"
+                        name="query" 
+                        [(ngModel)]="query.product.name"
+                        required>
+                </div>
+                <br />
+                <!-- <div class="form-group">
+                    <label for="CatTextField">Category</label>
+                    <input type="text" class="form-control"
+                    id="CatTextField"
+                    placeholder=""
+                    name="cat" 
+                    [(ngModel)]="query.category"
+                    required>
+                </div> -->
+                <br />
+                <div class="form-group">
+                    <label for="descTextField">Question</label>
+                    <input type="textbox" class="form-control"
+                    id="descTextField"
+                    placeholder="Enter a description"
+                    name="description" 
+                    [(ngModel)]="query.questionText"
+                    >
+                </div>
+                <br />
+                <!-- <div class="form-group">
+                    <label for="activeField">Active</label>
+                    <input type="checkbox" class="form-check-input"
+                    id="activeField"
+                    name="Active" 
+                    [(ngModel)]="query.isactive"
+                    >
+                </div> -->
+                <br />
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> 
+                    Submit
+                </button>
+                
+                <a href="#" routerLink="/questions/" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> 
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<app-footer></app-footer>
