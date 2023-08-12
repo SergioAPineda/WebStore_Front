@@ -38,7 +38,7 @@ export class RestDataSource{
 
     insertProduct(item: Product): Observable<Product> {
         return this.http.post<Product>(
-                this.baseUrl + "product/new",
+                this.baseUrl + "products/new",
                 item,
                 this.provideToken()
             ).pipe(map(response => {
@@ -52,7 +52,7 @@ export class RestDataSource{
 
     updateProduct(item: Product): Observable<ResponseModel> {
         return this.http.put<ResponseModel>(
-                `${this.baseUrl}product/update/${item._id}`,
+                `${this.baseUrl}products/update/${item._id}`,
                 item,
                 this.provideToken()
             ).pipe(map(response => {
