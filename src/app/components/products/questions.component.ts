@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { Question } from "src/app/models/question.model";
+import { QuestionModel } from "src/app/models/question.model";
 import { ProductRepository } from "src/app/models/product.repository";
 import { QuestionRepository } from "src/app/models/question.repository";
+import { Product } from "src/app/models/product.model";
 
 @Component({
     selector:"question-list",
@@ -13,11 +14,11 @@ export class QuestionListComponent{
 
     title = 'Question List';
 
-    constructor(public repository: QuestionRepository, private router: Router){
-        repository.setQuestion();
+    constructor(public repository: QuestionRepository, item: Product, private router: Router){
+        repository.setQuestion(item);
     }
 
-    get questionList(): Question[]{
+    get questionList(): QuestionModel[]{
         return this.repository.getQuestion();
     }
 
