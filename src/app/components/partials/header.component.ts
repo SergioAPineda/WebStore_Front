@@ -9,8 +9,15 @@ import { AuthService } from "src/app/models/auth.service";
 
 export class HeaderComponent{
     @Input() title?: string;
+  authenticated: boolean;
 
-    constructor(public auth: AuthService, private router: Router) { }
+    constructor(public auth: AuthService, private router: Router) {
+      this.authStatus();
+     }
+
+    authStatus (){
+      this.authenticated = this.auth.authenticated;  
+}
 
     logout() {
         if (confirm('Are you sure?')) {
