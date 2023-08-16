@@ -7,12 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list.component';
 import { AddEditComponent } from "./add_edit.component";
 import { ProductDetailComponent } from './productDetail.component';
+import { QuestionListComponent } from './questions.component';
 
 
 @NgModule({
     imports: [ModelModule, PartialsModule, BrowserModule, FormsModule, RouterModule],
-    declarations: [ListComponent, AddEditComponent, ProductDetailComponent],
-    exports: [ListComponent, AddEditComponent, ProductDetailComponent]
+    declarations: [ListComponent, AddEditComponent, ProductDetailComponent, QuestionListComponent],
+    exports: [ListComponent, AddEditComponent, ProductDetailComponent, QuestionListComponent]
 })
 
 export class ProductsModule{}
