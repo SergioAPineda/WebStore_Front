@@ -43,7 +43,7 @@ async saveProduct(item: Product) {
                 else{ // If API send error.
                     // Convert into ResponseModel to get the error message.
                     let error = response as ResponseModel;  
-                    alert(`Error: ${error.message}`);
+                    alert(`Response: ${error.message}`);
                 }
             });
     } else {
@@ -59,7 +59,7 @@ async saveProduct(item: Product) {
             }
             else{
                 // If API send error.
-                alert(`Error: ${response.message}`);
+                alert(`Response: ${response.message}`);
             }        
         });
     }

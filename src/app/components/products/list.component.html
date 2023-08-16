@@ -29,8 +29,8 @@
                     <th class="text-center">Category</th>
                     <th class="text-center">Description</th>
                     <!-- <th class="text-center">Owner</th> -->
-                    <th class="text-center">Is Active</th>
-                    <th class="text-center" colspan="2">Actions</th>
+                    <th class="text-center" *ngIf="this.authenticated == true">Is Active</th> 
+                    <th class="text-center" *ngIf="this.authenticated == true" colspan="2">Actions</th>
                     <th class="text-center"></th>
                 </tr>
 
@@ -53,26 +53,27 @@
                                 <i class="fas fa-trash-alt"></i></a>
                         </td> -->
                         <!-- <td class="text-center">{{ item.owner }}</td> -->
-                        <td class="text-center">
+
+                        <td class="text-center" *ngIf="this.authenticated == true">
                             
                             <input type="checkbox" class="form-check-input" 
-                            id="activeField" name="Active" [(ngModel)]="item.isactive"
-                            >
+                            id="activeField" name="Active" [(ngModel)]="item.isactive">
                                                       
-                        </td>
-                        <td class="text-center">
+                        </td> 
+                        <td class="text-center" *ngIf="this.authenticated == true">
                             <button [routerLink]="['/products/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
                                 <i class="fas fa-pencil-alt" ></i></button>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center" *ngIf="this.authenticated == true">
                             <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i></a>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center" >
+
                             <a (click)="showDetails(item._id)" class="btn bg-danger btn-danger btn-sm">
                                 <i class="fas fa-comment-alt"></i></a>
                             <button [routerLink]="['prod/details/', item._id]" class="btn bg-info btn-primary btn-sm">
-                              <i class="fas fa-comment-alt"> Inquire</i>
+                              <i class="fas fa-comment-alt">Get More Info</i>
                             </button>
                           </td>
                     </tr> 
