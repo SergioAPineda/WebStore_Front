@@ -43,6 +43,14 @@
     margin-bottom: 3rem;
 }
 
+.pick-item {
+    margin: 2rem;
+}
+
+.pick-item:hover {
+    transform: scale(1.3);
+}
+
 .inquire-btn {
   appearance: none;
   background-color: #000000;
