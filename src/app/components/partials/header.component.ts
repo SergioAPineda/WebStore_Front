@@ -22,6 +22,7 @@ export class HeaderComponent{
     logout() {
         if (confirm('Are you sure?')) {
           this.auth.clear();
+          this.authStatus ();
           this.router.navigateByUrl("/");
         }
       }
