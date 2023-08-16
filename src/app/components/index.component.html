@@ -1,10 +1,12 @@
+<app-header [title]="title"></app-header>
+
 <div class="container">
-      
-    <!-- <div class="title-section">
+
+  <!-- <div class="title-section">
         <h1 class="page-title">{{ title }}</h1>
          <p>Welcome to {{ title }}!</p> -->
-    <!-- </div>  -->
-</div>
+  <!-- </div>  -->
+  <!-- </div>
 <app-header [title]="title"></app-header>
 <div *ngIf="{title: 'Home'}" id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -30,8 +32,8 @@
 
   <div class="container">
         <div class="main-content">
-        <!-- <h1>{{ title }}</h1> -->
-        <!-- <p>Welcome to {{ title }}!</p> -->
+        <h1>{{ title }}</h1>
+        <p>Welcome to {{ title }}!</p>
             <h1>Our Top Picks</h1>
             <p></p>
             <h6>Shop for the best vintage items here at the best prices - we have you covered.</h6>
@@ -42,6 +44,22 @@
                 <button-component></button-component>
             </div>
         </div>
-  </div> 
+  </div>  -->
 
-<app-footer></app-footer>
+  <div class="d-inline-flex justify-content-around" *ngFor="let item of productsList">
+
+    <div class="p-2 flex-fill shadow-sm p-3 mb-5 bg-body-tertiary rounded gap-3">
+
+      <div class="card" style="width: 18rem;">
+        <img src="../../assets/{{ item.name }}.jpg" class="card-img-top" alt="{{ item.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.description }}</p>
+          <a href="#" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
