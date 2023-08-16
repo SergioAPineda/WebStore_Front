@@ -1,10 +1,10 @@
 import { Product } from "./product.model";
 
-export class Question {
+export class QuestionModel {
 
     constructor(
             public _id?: string,
-            public product?: Product,
+            public product_id?: string,
             public questionText?: string,
             public created?: Date, 
             public userName?: string,

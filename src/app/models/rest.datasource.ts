@@ -2,10 +2,10 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 import { Product } from "./product.model";
-import { Question } from "./question.model";
 import { Injectable } from "@angular/core";
 import { User } from "./user.model";
 import { ResponseModel } from "./response.model";
+import { QuestionModel } from "./question.model";
 import { environment } from "src/environments/environment";
 
 
@@ -27,6 +27,15 @@ export class RestDataSource{
         return this.http.get<Product[]>(this.baseUrl + "products/");
     }
 
+    getUsersList(): Observable<User[]>{
+        console.log("get users endpoint  "+this.baseUrl + "users/userlist")
+        return this.http.get<User[]>(this.baseUrl + "users/userlist");
+    }
+
+    getQuestionsByProduct(item: Product): Observable<QuestionModel[]>{
+        return this.http.get<QuestionModel[]>(this.baseUrl+ `question/product/"${item._id}`)
+    }
+
     insertProduct(item: Product): Observable<Product> {
         return this.http.post<Product>(
                 this.baseUrl + "products/new",
@@ -44,6 +53,17 @@ export class RestDataSource{
     updateProduct(item: Product): Observable<ResponseModel> {
         return this.http.put<ResponseModel>(
                 `${this.baseUrl}products/update/${item._id}`,
+                item,
+                this.provideToken()
+            ).pipe(map(response => {
+                return response;
+            }),
+            catchError(error => {return of(error.error)}));
+    }
+
+    updateUser(item: User): Observable<ResponseModel> {
+        return this.http.put<ResponseModel>(
+                `${this.baseUrl}users/edit/${item._id}`,
                 item,
                 this.provideToken()
             ).pipe(map(response => {
@@ -76,53 +96,6 @@ export class RestDataSource{
     }
 
     
-    // Question Data Source
-
-    // Get Question list from the backend.
-    getQuestionList(): Observable<Question[]>{
-        console.log("get questions endpoint  "+this.baseUrl + "questions/id")
-        return this.http.get<Question[]>(this.baseUrl + "questions/id");
-    }
-
-    // Insert Question
-    insertQuestion(item: Question): Observable<Question> {
-        return this.http.post<Question>(
-                this.baseUrl + "questions/new",
-                item,
-                this.provideToken()
-            ).pipe(map(response => {
-                return response;
-            }),
-            catchError(error => {
-                console.log(error.error);
-                return of(error.error);
-            }));
-    }
-
-    // update question
-    updateQuestion(item: Question): Observable<ResponseModel> {
-        return this.http.put<ResponseModel>(
-                `${this.baseUrl}questions/update/${item._id}`,
-                item,
-                this.provideToken()
-            ).pipe(map(response => {
-                return response;
-            }),
-            catchError(error => {return of(error.error)}));
-    }
-
-    // delete question
-    deleteQuestion(id: string): Observable<ResponseModel> {
-        return this.http.delete<ResponseModel>(
-                `${this.baseUrl}questions/delete/${id}`,
-                this.provideToken()
-                ).pipe(map(response => {
-                return response;
-            }),
-            catchError(error => {return of(error.error)}));
-    }
-
-
     // User endpoint of the API
     signupUser(user: User): Observable<ResponseModel> {
         console.log("sign up endpoint  "+this.baseUrl + "users/signup")
