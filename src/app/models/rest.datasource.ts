@@ -32,8 +32,9 @@ export class RestDataSource{
         return this.http.get<User[]>(this.baseUrl + "users/userlist");
     }
 
-    getQuestionsByProduct(item: Product): Observable<QuestionModel[]>{
-        return this.http.get<QuestionModel[]>(this.baseUrl+ `question/product/"${item._id}`)
+    getQuestionsByProduct(product_id: String): Observable<QuestionModel[]>{
+        console.log("datasource product_id: "+product_id)
+        return this.http.get<QuestionModel[]>(this.baseUrl+ `question/product/${product_id}`)
     }
 
     insertProduct(item: Product): Observable<Product> {

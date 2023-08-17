@@ -16,8 +16,13 @@ export class QuestionRepository{
         return this.QuestionList
     }
 
-    setQuestion(item: Product){
-        this.dataSource.getQuestionsByProduct(item).subscribe(data => {
+    setQuestion(product_id: String){
+        console.log("setQuestion")
+        
+        this.dataSource.getQuestionsByProduct(product_id).subscribe(data => {
+            
+            console.log("data: "+data)
+
             this.QuestionList = data;
             this.listReady = true;
         });

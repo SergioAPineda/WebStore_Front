@@ -1,5 +1,10 @@
 <app-header [title]="title"></app-header>
 
+<button class="btn" *ngIf="this.repository.listReady == false">
+  <span class="spinner-border spinner-border-sm"></span>
+  Loading...
+</button>
+
 <div class="container">
   <div class="d-inline-flex justify-content-around" *ngFor="let item of productsList">
 
