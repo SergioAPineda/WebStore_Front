@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
-            <h1>{{editing ? "Edit" : "Add a new"}} Item</h1>
+            <h1>{{editing ? "Edit" : "Add a new"}} Product</h1>
 
             <form novalidate #form="ngForm" (ngSubmit)="save(form)">
             <!-- <form class="form" method="POST"> -->
@@ -13,10 +13,10 @@
                         name="id"
                         [(ngModel)]="item._id"
                     >
-                    <label for="itemTextField">Item Name</label>
+                    <label for="itemTextField">Product Name</label>
                     <input type="text" class="form-control"
                         id="itemTextField"
-                        placeholder="Enter the Item Name"
+                        placeholder="Enter the Product Name"
                         name="item" 
                         [(ngModel)]="item.name"
                         required>
@@ -63,6 +63,8 @@
                 </a>
 
             </form>
+
+            <answer-list></answer-list>
         </div>
 
     </div>

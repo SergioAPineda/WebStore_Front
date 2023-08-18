@@ -13,7 +13,7 @@ import { User } from "src/app/models/user.model";
 
 export class ListComponent{
 
-    title = 'Product List';
+    title = 'My Products';
     item: Product = new Product();
     user: User = new User();
 

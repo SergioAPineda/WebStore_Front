@@ -76,6 +76,17 @@ export class RestDataSource{
             catchError(error => {return of(error.error)}));
     }
 
+    updateQuestion(item: QuestionModel): Observable<ResponseModel>{
+        return this.http.put<ResponseModel>(
+            `${this.baseUrl}question/update/${item._id}`,
+            item,
+            this.provideToken()
+        ).pipe(map(response => {
+            return response;
+        }),
+        catchError(error => {return of(error.error)}));
+    }
+
     updateUser(item: User): Observable<ResponseModel> {
         return this.http.put<ResponseModel>(
                 `${this.baseUrl}users/edit/${item._id}`,
