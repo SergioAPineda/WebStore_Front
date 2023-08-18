@@ -41,8 +41,18 @@ export class UserRepository {
         // return (this.Product.find(i => i._id === id)!);        
     }
 
-    getUserByUserName(userName: string): User {        
-        return Object.assign({}, this.UserList.find(i => i.username === userName)!);            
+    // getUserByUserName(userName: string): User {        
+    //     return Object.assign({}, this.UserList.find(i => i.username === userName)!);            
+    // }
+
+    getUserByUserName(userName: string): User{
+
+        const result: User[] = this.UserList.filter((i) => {
+
+            return i.username == userName 
+        });
+
+        return result[0];
     }
 
     async saveUser(item: User) {

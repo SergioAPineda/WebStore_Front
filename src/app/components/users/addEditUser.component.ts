@@ -25,10 +25,10 @@ export class AddEditUserComponent {
         repository.setUser();
         this.editing = activeRoute.snapshot.params["mode"] == "edit";
         
-        // if (this.editing) {
-        //     this.productsList();
-        //     console.log('this.user')
-        // }    
+        if (this.editing) {
+            this.user = this.repository.getUserByUserName(this.auth.username);
+            console.log('this.user')
+        }    
     }
 
     get loggedUser(){
@@ -40,7 +40,9 @@ export class AddEditUserComponent {
 
     save(form: NgForm) {
         this.repository.saveUser(this.user);
-        this.router.navigateByUrl("users/userlist");                
+        // this.router.navigateByUrl("users/userlist");
+        this.router.navigateByUrl(`users/${this.auth.username}`);                
+             
     }
 
     update(form: NgForm) {
