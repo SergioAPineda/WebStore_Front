@@ -20,6 +20,7 @@ import { AboutComponent } from './components/about/about.component';
             { path: "products/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
             { path: "products/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },
             { path: "products/delete/:id", component: AddEditComponent, canActivate: [AuthGuard] },
+            { path: "products/new", component: AddEditComponent, canActivate: [AuthGuard] },
             { path: "prod/details/:id", component: ProductDetailComponent},
             { path: "users/signin", component: SignInComponent },
             { path: "users/signup", component: SignUpComponent },
