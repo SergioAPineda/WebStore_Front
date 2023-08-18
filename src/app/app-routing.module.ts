@@ -25,7 +25,7 @@ import { AboutComponent } from './components/about/about.component';
             { path: "users/signin", component: SignInComponent },
             { path: "users/signup", component: SignUpComponent },
             { path: "users/userlist", component: UsersListComponent},
-            { path: "users/:mode/:id", component: AddEditUserComponent, canActivate: [AuthGuard]},
+            { path: "users/edit/:id", component: AddEditUserComponent, canActivate: [AuthGuard]},
             { path: "**", redirectTo: "" }
         ])
     ],

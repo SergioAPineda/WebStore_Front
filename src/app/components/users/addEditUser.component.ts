@@ -23,6 +23,7 @@ export class AddEditUserComponent {
     { 
 
         repository.setUser();
+
         this.editing = activeRoute.snapshot.params["mode"] == "edit";
         
         if (this.editing) {
