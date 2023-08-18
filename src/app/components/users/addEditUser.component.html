@@ -6,14 +6,10 @@
         <div class="offset-md-3 col-md-6">
             <h1>Edit User</h1>
 
-            <form novalidate #form="ngForm" (ngSubmit)="save(form)">
+            <form novalidate #form="ngForm" (ngSubmit)="update(form)" *ngIf="loggedUser._id != null">
                 <div class="form-group">
                     <input type="hidden" name="id" [(ngModel)]="user._id">
                     <label>First Name</label>
-                    <input type="text" name="firstName" [(ngModel)]="user.firstName" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>First Name:</label>
                     <input type="text" name="firstName" [(ngModel)]="user.firstName" class="form-control" />
                 </div>
                 <div class="form-group">

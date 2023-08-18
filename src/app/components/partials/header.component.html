@@ -7,7 +7,7 @@
 
   <ul class="navbar-nav nav-items">
     <li class="nav-item">
-      <a class="nav-link" [class.active]="title == 'Home'" href="/">
+      <a class="nav-link" [class.active]="title == 'Home'" routerLink="/">
 
         <i class="fas fa-home"></i> Home
       </a>
@@ -16,7 +16,7 @@
       <!-- <% if (title == "About") { %>
           <a class="nav-link active" href="/about">
       <% } else { %> -->
-      <a class="nav-link" [class.active]="title == 'About'" href="/about">
+      <a class="nav-link" [class.active]="title == 'About'" routerLink="/about">
       <!-- <% } %>             -->
       <i class="fa-solid fa-address-card"></i> About 
       </a>
@@ -50,8 +50,8 @@
       </ul>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [class.active]="title == 'Users'" href="/users/userlist">
-        <i class="fas fa-user"></i> Users
+      <a *ngIf="auth.username != null"class="nav-link" [class.active]="title == 'Users'" routerLink="/users/edit/{{ auth.username }}">
+        <i class="fas fa-user"></i> Profile
       </a>
     </li>
     <li class="nav-item">

@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { User } from "../../models/user.model";
 import { UserRepository } from "../../models/user.repository";
+import { AuthService } from "src/app/models/auth.service";
 
 @Component({
     selector: "add-edit-user",
@@ -15,28 +16,36 @@ export class AddEditUserComponent {
     editing: boolean = false;
     user: User = new User();
 
-    constructor(private repository: UserRepository,
+    constructor(public auth: AuthService,
+        private repository: UserRepository,
                 private router: Router,
                 activeRoute: ActivatedRoute) 
     { 
 
-        console.log("activeRoute.snapshot.params "+activeRoute.snapshot)
-        if (activeRoute.snapshot.params["mode"] == "delete") {
-            console.log("entrando a edit delete")
-            this.deleteItem(activeRoute.snapshot.params["id"]);
-        }
-
+        repository.setUser();
         this.editing = activeRoute.snapshot.params["mode"] == "edit";
         
-        //Edit
-        if (this.editing) {
-            this.user = this.repository.getUserById(activeRoute.snapshot.params["id"]);
-        }    
+        // if (this.editing) {
+        //     this.productsList();
+        //     console.log('this.user')
+        // }    
+    }
+
+    get loggedUser(){
+        console.log('user name auth: '+this.auth.username)
+        this.user = this.repository.getUserByUserName(this.auth.username);
+        console.log('user result: '+this.user)
+        return this.user
     }
 
     save(form: NgForm) {
         this.repository.saveUser(this.user);
         this.router.navigateByUrl("users/userlist");                
+    }
+
+    update(form: NgForm) {
+        this.repository.saveUser(this.user);
+        this.router.navigateByUrl(`users/${this.auth.username}`);                
     }
 
     private deleteItem(id: string){
