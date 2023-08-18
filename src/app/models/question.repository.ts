@@ -26,6 +26,24 @@ export class QuestionRepository{
             this.QuestionList = data;
             this.listReady = true;
         });
+
+    }
+
+    postQuestion(item: QuestionModel){
+        console.log("postQuestion")
+        
+        this.dataSource.postQuestion(item)
+            .subscribe(response => {
+                if(response._id) // If API created
+                {
+                    this.QuestionList.push(response);
+                }
+                else{ // If API send error.
+                    // Convert into ResponseModel to get the error message.
+                    let error = response as ResponseModel;  
+                    alert(`Error: ${error.message}`);
+                }
+            });
     }
 
 // 

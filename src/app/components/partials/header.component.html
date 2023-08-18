@@ -31,7 +31,7 @@
             <i class="fas fa-home"></i> About 
         </a>
       </li>
-      <li class="nav-item dropdown">
+      <li *ngIf="auth.username != null" class="nav-item dropdown">
         <!-- <% if (title == "Products List" || title == "Add a new Item") { %> -->
         <a *ngIf="title == 'Products List' || title == 'Add a new Item'; else deactiveList"
             class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">

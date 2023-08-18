@@ -26,6 +26,10 @@ export class RestDataSource{
         console.log("get products endpoint  "+this.baseUrl + "products/")
         return this.http.get<Product[]>(this.baseUrl + "products/");
     }
+    getProductsByUser(item: User): Observable<Product[]>{
+        console.log("get products endpoint  "+this.baseUrl +`products/user/${item._id}`)
+        return this.http.get<Product[]>(this.baseUrl + "products/");
+    }
 
     getUsersList(): Observable<User[]>{
         console.log("get users endpoint  "+this.baseUrl + "users/userlist")
@@ -42,6 +46,19 @@ export class RestDataSource{
                 this.baseUrl + "products/new",
                 item,
                 this.provideToken()
+            ).pipe(map(response => {
+                return response;
+            }),
+            catchError(error => {
+                console.log(error.error);
+                return of(error.error);
+            }));
+    }
+
+    postQuestion(item: QuestionModel): Observable<QuestionModel> {
+        return this.http.post<QuestionModel>(
+                this.baseUrl + "question/new",
+                item
             ).pipe(map(response => {
                 return response;
             }),
