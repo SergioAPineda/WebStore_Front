@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { User } from "../../models/user.model";
 import { UserRepository } from "../../models/user.repository";
+import { AuthService } from "src/app/models/auth.service";
 
 @Component({
     selector: "add-edit-user",
@@ -22,7 +23,7 @@ export class AddEditUserComponent {
 
         console.log("activeRoute.snapshot.params "+activeRoute.snapshot)
         if (activeRoute.snapshot.params["mode"] == "delete") {
-            console.log("entrando a edit delete")
+            
             this.deleteItem(activeRoute.snapshot.params["id"]);
         }
 

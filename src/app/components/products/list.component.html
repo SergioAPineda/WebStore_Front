@@ -1,19 +1,11 @@
 <app-header [title]="title"></app-header>
 
-  <!-- Main Content -->
+
   <main class="container">
     <div class="row">
         <h1>{{ title }}</h1>
         <br>
         <div>
-            <!-- <a href="/inventory/add" class="btn btn-primary align-self-end" role="button">
-                <i class="fas fa-plus-circle"></i> 
-                Add a new Item
-            </a>                 -->
-            <!-- <a routerLink="/inventory/add" class="btn btn-primary align-self-end" role="button">
-                <i class="fas fa-plus-circle"></i> 
-                Add a new Item
-            </a>  -->
         </div>
 
         <button class="btn" *ngIf="this.repository.listReady == false">
@@ -23,44 +15,26 @@
 
         <div class="table-responsive" *ngIf="this.repository.listReady == true">
             <table class="table table-bordered table-striped table-hover">
-                <!-- Header Row-->
                 <tr>
                     <th class="text-center">Name</th>
                     <th class="text-center">Category</th>
                     <th class="text-center">Description</th>
-                    <!-- <th class="text-center">Owner</th> -->
-                    <th class="text-center">Is Active</th>
-                    <th class="text-center" colspan="2">Actions</th>
                     <th class="text-center"></th>
                 </tr>
 
-                <!-- Repeatable Template Row -->
-
-                <!-- <% for(let count = 0; count < productsList.length; count++) { %> -->
-                    <!-- <tr> -->
                     <tr *ngFor="let item of productsList">
-                        <td class="text-center"> {{ item.name }} </td>
+                        <td class="text-center"> <a [routerLink]="['/products/edit/', item._id]">{{ item.name }}</a></td>
                         <td class="text-center"> {{ item.category }} </td>
                         <td class="text-center"> {{ item.description }} </td>
                         
-                        <!-- <td class="text-center">{{ item.tags }}</td> -->
                         <!-- <td class="text-center">
-                            <button class="btn bg-primary btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt" ></i></button>
-                        </td>
-                        <td class="text-center">
-                            <a class="btn bg-danger btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i></a>
-                        </td> -->
-                        <!-- <td class="text-center">{{ item.owner }}</td> -->
-                        <td class="text-center">
                             
                             <input type="checkbox" class="form-check-input" 
                             id="activeField" name="Active" [(ngModel)]="item.isactive"
                             >
                                                       
-                        </td>
-                        <td class="text-center">
+                        </td> -->
+                        <!-- <td class="text-center">
                             <button [routerLink]="['/products/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
                                 <i class="fas fa-pencil-alt" ></i></button>
                         </td>
@@ -74,9 +48,8 @@
                             <button [routerLink]="['prod/details/', item._id]" class="btn bg-info btn-primary btn-sm">
                               <i class="fas fa-comment-alt"> Inquire</i>
                             </button>
-                          </td>
+                          </td> -->
                     </tr> 
-                <!-- <% } %> -->
             </table>
         </div>
     </div>

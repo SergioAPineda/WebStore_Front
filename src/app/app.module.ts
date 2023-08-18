@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthModule } from './components/auth/auth.module';
 import { AuthGuard } from './components/auth/auth.guard';
+import { AboutModule } from './components/about/about.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthGuard } from './components/auth/auth.guard';
     AppRoutingModule,
     BrowserModule,
     IndexModule,
+    AboutModule,
     ProductsModule,
     UsersModule,
     AuthModule

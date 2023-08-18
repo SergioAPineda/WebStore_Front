@@ -41,6 +41,10 @@ export class UserRepository {
         // return (this.Product.find(i => i._id === id)!);        
     }
 
+    getUserByUserName(userName: string): User {        
+        return Object.assign({}, this.UserList.find(i => i.username === userName)!);            
+    }
+
     async saveUser(item: User) {
 
         this.dataSource.updateUser(item).subscribe(resp => {

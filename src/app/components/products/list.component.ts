@@ -2,6 +2,9 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { Product } from "src/app/models/product.model";
 import { ProductRepository } from "src/app/models/product.repository";
+import { UserRepository } from "src/app/models/user.repository";
+import { AuthService } from "src/app/models/auth.service";
+import { User } from "src/app/models/user.model";
 
 @Component({
     selector:"product-list",
@@ -11,14 +14,18 @@ import { ProductRepository } from "src/app/models/product.repository";
 export class ListComponent{
 
     title = 'Product List';
+    item: Product = new Product();
+    user: User = new User();
 
-    constructor(public repository: ProductRepository, private router: Router){
+    constructor(public auth: AuthService, public repository: ProductRepository, public userRepository: UserRepository, private router: Router){
+        userRepository.setUser();
         repository.setProduct();
     }
 
     get productsList(): Product[]{
-        return this.repository.getProduct();
-    
+        this.user = this.userRepository.getUserByUserName(this.auth.username);
+        console.log('usuario resultado: '+this.user.username)
+        return this.repository.getProductsByUser(this.user);
     }
 
     deleteMethod(id: string) {

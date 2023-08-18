@@ -9,12 +9,14 @@ import { ListComponent } from './components/products/list.component';
 import { IndexComponent } from './components/index.component';
 import { AuthGuard } from "./components/auth/auth.guard";
 import { ProductDetailComponent } from './components/products/productDetail.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             { path: "", component: IndexComponent },
-            { path: "products/list", component: ListComponent },
+            { path: "about", component: AboutComponent },
+            { path: "products/list", component: ListComponent, canActivate: [AuthGuard]},
             { path: "products/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
             { path: "products/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },
             { path: "products/delete/:id", component: AddEditComponent, canActivate: [AuthGuard] },
@@ -22,7 +24,7 @@ import { ProductDetailComponent } from './components/products/productDetail.comp
             { path: "users/signin", component: SignInComponent },
             { path: "users/signup", component: SignUpComponent },
             { path: "users/userlist", component: UsersListComponent},
-            { path: "users/:mode/:id", component: AddEditUserComponent, canActivate: [AuthGuard]},
+            { path: "users/edit/:id", component: AddEditUserComponent, canActivate: [AuthGuard]},
             { path: "**", redirectTo: "" }
         ])
     ],
