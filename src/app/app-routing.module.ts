@@ -14,7 +14,7 @@ import { ProductDetailComponent } from './components/products/productDetail.comp
     imports: [
         RouterModule.forRoot([
             { path: "", component: IndexComponent },
-            { path: "products/list", component: ListComponent },
+            { path: "products/list", component: ListComponent, canActivate: [AuthGuard]},
             { path: "products/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
             { path: "products/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },
             { path: "products/delete/:id", component: AddEditComponent, canActivate: [AuthGuard] },

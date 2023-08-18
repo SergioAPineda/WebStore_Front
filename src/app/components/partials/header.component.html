@@ -1,84 +1,54 @@
-  <!-- Main Nav bar  -->
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand/logo -->
-    <a class="navbar-brand logo" href="#">
-      <img src="assets/EXPDEVS_logo1.png" alt="logo" style="width:12rem; border-radius: 5px;">
-    </a>
-    
-    <!-- Links -->
-    <ul class="navbar-nav nav-items">
-      <li class="nav-item">
-        <!-- <% if (title == "Home") { %> -->
-        <a class="nav-link" [class.active]="title == 'Home'" href="/">
-        <!-- <% } else { %> -->
-            <!-- <a class="nav-link" href="/"> -->
-        <!-- <% } %>             -->
-            <i class="fas fa-home"></i> Home 
-        </a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" [class.active]="title == 'Products'" href="products/list">
 
-          <i class="fas fa-project-diagram"></i> Products
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+  <a class="navbar-brand logo" href="#">
+    <img src="assets/EXPDEVS_logo1.png" alt="logo" style="width:12rem; border-radius: 5px;">
+  </a>
+
+  <ul class="navbar-nav nav-items">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="title == 'Home'" href="/">
+
+        <i class="fas fa-home"></i> Home
+      </a>
+    </li>
+    <li *ngIf="auth.username != null" class="nav-item dropdown">
+
+      <a *ngIf="title == 'Products List' || title == 'Add a new Item'; else deactiveList"
+        class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+        <i class="fa-solid fa-barcode"></i> Products
+      </a>
+
+      <ng-template #deactiveList>
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <i class="fa-solid fa-barcode"></i> Products
         </a>
-      </li> -->
-      <li class="nav-item">
-        <!-- <% if (title == "About") { %>
-            <a class="nav-link active" href="/about">
-        <% } else { %> -->
-        <a class="nav-link" [class.active]="title == 'About'" href="/about">
-        <!-- <% } %>             -->
-            <i class="fas fa-home"></i> About 
-        </a>
-      </li>
-      <li *ngIf="auth.username != null" class="nav-item dropdown">
-        <!-- <% if (title == "Products List" || title == "Add a new Item") { %> -->
-        <a *ngIf="title == 'Products List' || title == 'Add a new Item'; else deactiveList"
-            class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="fa-solid fa-barcode"></i> Products
-        </a>
-        <!-- <% } else { %> -->
-        <ng-template #deactiveList>
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            <i class="fa-solid fa-barcode"></i> Products
+      </ng-template>
+
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" routerLink="products/list">
+            <i class="fa-regular fa-rectangle-list"></i>
+            Products List
           </a>
-        </ng-template>
-        <!-- <% } %>        -->
-        <ul class="dropdown-menu">
-          <!-- <li><a class="dropdown-item" href="/inventory/list">Products List</a></li>
-          <li><a class="dropdown-item" href="/inventory/add">Add a new Item</a></li> -->
-          <li>
-            <a class="dropdown-item" routerLink="products/list">
-              <i class="fa-regular fa-rectangle-list"></i> 
-              Products List
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" routerLink="products/:mode">
-              <i class="fa-solid fa-square-plus"></i>
-              Add a new Item
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <!-- <% if (title == "Users") { %> -->
-            <!-- <a class="nav-link active" href="/users"> -->
-        <!-- <% } else { %> -->
-            <a class="nav-link" [class.active]="title == 'Users'" href="/users/userlist">
-        <!-- <% } %>             -->
-            <i class="fas fa-user"></i> Users 
-        </a>
-      </li>
-      <li class="nav-item">  
-        <!-- <% if (typeof userName == 'string' && userName) { %>
-          <a class="nav-link" href="/users/signout" onclick="return confirm('Are you sure?')">Sign Out (<%= userName %>)</a>
-        <% } else { %>
-          <a class="nav-link" href="/users/signin">Signin</a>
-        <% } %>             -->
-          <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Sign Out ({{ auth.username }})</a>
-          <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/signin">Signin</a>
-      </li> 
-      
-    </ul>
-  </nav>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="products/:mode">
+            <i class="fa-solid fa-square-plus"></i>
+            Add a new Item
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="title == 'Users'" href="/users/userlist">
+        <i class="fas fa-user"></i> Users
+      </a>
+    </li>
+    <li class="nav-item">
+      <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Sign Out ({{ auth.username
+        }})</a>
+      <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/signin">Signin</a>
+    </li>
+  </ul>
+</nav>
