@@ -9,11 +9,13 @@ import { ListComponent } from './components/products/list.component';
 import { IndexComponent } from './components/index.component';
 import { AuthGuard } from "./components/auth/auth.guard";
 import { ProductDetailComponent } from './components/products/productDetail.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             { path: "", component: IndexComponent },
+            { path: "about", component: AboutComponent },
             { path: "products/list", component: ListComponent, canActivate: [AuthGuard]},
             { path: "products/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
             { path: "products/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },

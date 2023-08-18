@@ -85,6 +85,35 @@
   transform: translateY(0);
 }
 
+.goal-description {
+    font-size: 110%;
+}
+
+.our-team {
+    display: flex;
+}
+
+.group-member {
+    position: relative;
+    border: solid;
+    border-width: 1px;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    width: 22rem;
+    height: 20rem;
+    color: white;
+    background-color: #1259aa;
+}
+
+.group-member:hover {
+    transform:scale(1.1);
+}
+
+.contact-icon {
+    margin-right: 0.5rem;
+}
 
 /* #carouselExample{
     
