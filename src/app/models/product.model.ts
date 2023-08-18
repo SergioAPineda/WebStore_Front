@@ -1,4 +1,6 @@
 export class Product {
+    questionId: null;
+    answer: null;
 
     constructor(
         public _id?: string,
@@ -6,7 +8,8 @@ export class Product {
         public category?: string,
         public description?: string,
         public isactive?: boolean,
-        public owner?: Owner
+        public owner?: Owner,
+        public qaPairs?: QAPair[] // Add this new property for question-answer pairs
     ){}
 
 }
@@ -19,3 +22,10 @@ export class Owner {
     ){}
 }
 
+export class QAPair {
+
+    constructor(
+        public question?: string,
+        public answer?: string
+    ){}
+}

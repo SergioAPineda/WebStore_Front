@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { Product } from "src/app/models/product.model";
 import { ProductRepository } from "src/app/models/product.repository";
-import { AuthGuard } from "../auth/auth.guard";
 import { AuthService } from "src/app/models/auth.service";
 
 @Component({
@@ -27,10 +26,8 @@ export class ListComponent{
     }
 
     
-
     get productsList(): Product[]{
         return this.repository.getProduct();
-    
     }
 
     deleteMethod(id: string) {

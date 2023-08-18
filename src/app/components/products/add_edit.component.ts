@@ -37,14 +37,13 @@ export class AddEditComponent {
         //     this.item.size = new Size();
         // }        
     }
-
+    
     save(form: NgForm) {
         this.repository.saveProduct(this.item);
         this.router.navigateByUrl("products/list");                
     }
 
     private deleteItem(id: string){
-        
         this.repository.deleteProduct(id);
         this.router.navigateByUrl("products/list");
     }

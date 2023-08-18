@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { map, catchError } from "rxjs/operators";
-import { Product } from "./product.model";
+import { Product, QAPair } from "./product.model";
 import { Injectable } from "@angular/core";
 import { User } from "./user.model";
 import { ResponseModel } from "./response.model";
@@ -50,7 +50,7 @@ export class RestDataSource{
             }));
     }
 
-    updateProduct(item: Product): Observable<ResponseModel> {
+updateProduct(item: Product): Observable<ResponseModel> {
         return this.http.put<ResponseModel>(
                 `${this.baseUrl}products/update/${item._id}`,
                 item,
@@ -60,6 +60,8 @@ export class RestDataSource{
             }),
             catchError(error => {return of(error.error)}));
     }
+
+
 
     updateUser(item: User): Observable<ResponseModel> {
         return this.http.put<ResponseModel>(
@@ -109,7 +111,53 @@ export class RestDataSource{
                 }));
     }
 
-    authenticate(user: string, pass: string): Observable<ResponseModel> {
+
+// Add a method to add a question for a product
+addQuestionToProduct(productId: string, question: string): Observable<ResponseModel> {
+    const newQuestion = {
+      question: question,
+      answer: '' // Initialize the answer as an empty string
+    };
+
+    return this.http.post<ResponseModel>(
+      `${this.baseUrl}products/${productId}/question`,
+      newQuestion,
+      this.provideToken()
+    ).pipe(
+      map(response => response),
+      catchError(error => of(error.error))
+    );
+  }
+
+// Add a method to answer a question for a product
+answerQuestion(productId: string, questionId: string, answer: string): Observable<ResponseModel> {
+    const answerData = {
+      questionId: questionId,
+      answer: answer
+    };
+  
+    return this.http.post<ResponseModel>(
+      `${this.baseUrl}products/${productId}/questions/${questionId}/answer`, // Update the endpoint
+      answerData,
+      this.provideToken()
+    ).pipe(
+      map(response => response),
+      catchError(error => of(error.error))
+    );
+  }
+  
+// New function to get question-answer pairs for a product
+getQuestionAnswerPairs(productId: string): Observable<QAPair[]> {
+    return this.http.get<QAPair[]>(
+        `${this.baseUrl}products/${productId}/qas`, // Update the endpoint
+        this.provideToken()
+    ).pipe(
+        catchError(error => of([])) // Handle errors and return an empty array
+    );
+}
+  
+
+authenticate(user: string, pass: string): Observable<ResponseModel> {
         console.log("sign in endpoint  "+this.baseUrl + "users/signin")
         return this.http.post<any>(this.baseUrl + "users/signin",
             {

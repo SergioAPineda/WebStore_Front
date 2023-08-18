@@ -54,7 +54,7 @@ export class UserRepository {
             }
             else{
                 // If API send error.
-                alert(`Error: ${response.message}`);
+                alert(`Response: ${response.message}`);
             }        
         });
     }

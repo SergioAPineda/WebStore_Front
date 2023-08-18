@@ -11,37 +11,38 @@
             Loading..
         </button>
 
-        <div class="table-responsive" *ngIf="this.repository.listReady == true">
+        <div class="table-responsive" *ngIf="repository.listReady">
+            <input type="hidden"
+            name="id"
+            [(ngModel)]="product._id"
+        >
             <table class="table table-bordered table-striped table-hover">
                 <!-- Header Row-->
                 <tr>
                     <th class="text-center">Product Name</th>
-                    <th class="text-center">Question</th>
-                    <th class="text-center">Answer</th>                 
+                                  
                     <th class="text-center" colspan="2">Actions</th>              
                 </tr>
-
+        
                 <!-- Repeatable Template Row -->
-
-                <!-- <% for(let count = 0; count < questionsList.length; count++) { %> -->
-                    <!-- <tr> -->
-                    <tr *ngFor="let query of questionList">
-                        <td class="text-center"> {{ query.questionText }} </td>
-                        <td class="text-center"> {{ query.answer }} </td>
-                        
-                        <td class="text-center">
-                            <button [routerLink]="['questions/answers/', query._id]" class="btn bg-primary btn-primary btn-sm">
-                                <i class="fa-solid fa-a" ></i></button>
-                        </td>
-                        <td class="text-center">
-                            
-                            <a (click)="deleteQuestionMethod(query._id)" class="btn bg-danger btn-danger btn-sm">
-                                <i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr> 
-                <!-- <% } %> -->
+                <tr *ngFor="let qapair of qaPairs">
+                    <p class="text-center">Question</p>
+                       
+                    <p class="text-center">{{ qapair.question }}</p>
+                    <p class="text-center">Answer</p>
+                    <p class="text-center">{{ qapair.answer }}</p>
+                    
+                    <td class="text-center">
+                        <button [routerLink]="['questions/answers/']" class="btn bg-primary btn-primary btn-sm">
+                            <i class="fa fa-a"></i></button>
+                    </td>
+                    <!-- <td class="text-center">
+                        <a (click)="deleteQuestionMethod(qapair._id)" class="btn bg-danger btn-danger btn-sm">
+                            <i class="fa fa-trash-alt"></i></a>
+                    </td> -->
+                </tr>
             </table>
         </div>
-    </div>
-  </main>
+        
+  
 <app-footer></app-footer>

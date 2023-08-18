@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Product } from "./product.model";
+import { Product, QAPair } from "./product.model";
 import { RestDataSource } from "./rest.datasource";
 import { ResponseModel } from "./response.model";
 
@@ -8,6 +8,7 @@ export class ProductRepository{
 
     private ProductList: Product[] = [];
     listReady: boolean = false;
+    QAPairs: QAPair[];
 
     constructor(private dataSource: RestDataSource){}
 
@@ -15,11 +16,21 @@ export class ProductRepository{
         return this.ProductList
     }
 
+    getQAs(): QAPair[] {
+        return this.QAPairs;
+    }
+
     
     setProduct(){
         this.dataSource.getProductsList().subscribe(data => {
             this.ProductList = data;
             this.listReady = true;
+        });
+    }
+
+    setQAs(productId: string) {
+        this.dataSource.getQuestionAnswerPairs(productId).subscribe(data => {
+            this.QAPairs = data;
         });
     }
 
@@ -62,7 +73,23 @@ async saveProduct(item: Product) {
                 alert(`Response: ${response.message}`);
             }        
         });
+
+        
     }
+
+     // Ensure to include the new code for answering a question:
+     if (item.questionId != null && item.answer != null) {
+        this.dataSource.answerQuestion(item._id, item.questionId, item.answer)
+            .subscribe(response => {
+                if (response.success) {
+                    console.log('Question answered successfully');
+                    // Handle the success response, if needed
+                } else {
+                    console.error('Error answering question:', response.message);
+                    // Handle the error response, if needed
+                }
+            });
+}
 }
   
 
@@ -78,5 +105,7 @@ deleteProduct(id: string) {
         }
     })
 }
+
+
 
 }
